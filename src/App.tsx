@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Home from "./components/Home";
-import Flights from "./components/Flights";
-import Wallet from "./components/Wallet";
+import Home from "./components/Home/Home";
+import Flights from "./components/Flights/Flights";
+import Wallet from "./components/Wallet/Wallet";
 
 
 const App: React.FC = () => {

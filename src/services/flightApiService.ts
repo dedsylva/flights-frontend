@@ -5,22 +5,22 @@ import { getResponse } from "../utils/helpers";
 
 export const fetchAvailableFlights = async (): Promise<any> => {
   const response: Response = await fetch(`${BASE_URL}${API_VERSION}/flights`);
-  getResponse(response, "Error fetching available flights");
+  return getResponse(response, "Error fetching available flights");
 };
 
 export const fetchFlightsBySourceAndDestination = async (source: string, destination: string): Promise<any> => {
   const response: Response = await fetch(`${BASE_URL}${API_VERSION}/flights/by-route?source=${source}&destination=${destination}`);
-  getResponse(response, `Error fetching flights by source ${source} and destination ${destination}`);
+  return getResponse(response, `Error fetching flights by source ${source} and destination ${destination}`);
  };
 
 export const fetchFlightsByDate = async (flightDate: Date): Promise<any> => {
   const response: Response = await fetch(`${BASE_URL}${API_VERSION}/flights/by-date?flightDate=${flightDate}`);
-  getResponse(response, `Error fetching flights by date ${flightDate}`);
+  return getResponse(response, `Error fetching flights by date ${flightDate}`);
 };
 
 export const fetchFlightsWithCapacity = async (maxCapacity: number): Promise<any> => {
   const response: Response = await fetch(`${BASE_URL}${API_VERSION}/flights/by-date?maxCapacity=${maxCapacity}`);
-  getResponse(response, `Error fetching flights with max capacity ${maxCapacity}`);
+  return getResponse(response, `Error fetching flights with max capacity ${maxCapacity}`);
 };
 
 export const addFlight = async (flight: Flight): Promise<any> => {
@@ -28,9 +28,10 @@ export const addFlight = async (flight: Flight): Promise<any> => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     },
     body: JSON.stringify(flight),
   }
   const response: Response = await fetch(`${BASE_URL}${API_VERSION}/flights`, payload);
-  getResponse(response, `Error adding flight ${flight}`);
+  return getResponse(response, `Error adding flight ${flight}`);
 };

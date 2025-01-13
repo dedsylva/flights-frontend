@@ -1,0 +1,6 @@
+.flights-table {
+  background-color: black;
+}
+
+.flights-table th, .flights-table td {
+  color: white; /* Set text color to white to make it visible on a black background */

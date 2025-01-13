@@ -9,6 +9,7 @@ export const payFlight = async (flight: Flight): Promise<any> => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     },
     body: JSON.stringify(flight),
   }

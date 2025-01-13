@@ -1,5 +1,3 @@
-import Decimal from "decimal.js";
-
 export interface Flight {
   source: string,
   destination: string,
@@ -7,5 +5,5 @@ export interface Flight {
   passengers: number,
   totalCapacity: number,
   price: number,
-  profit: Decimal
+  profit: number
 }
