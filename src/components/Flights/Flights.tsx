@@ -42,7 +42,7 @@ const Flights: React.FC = () => {
 
   return (
     <div>
-      <h1>Flights Page</h1>
+      <h2>Flights Available</h2>
 
       {error && <p style={{ color: "red" }}>{error}</p>} {/* Display error if any */}
 

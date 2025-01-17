@@ -1,13 +1,36 @@
 .container {
+  margin-top: 5rem; /* Keeps space for the header */
+  width: 100%;
+}
 
+.airplane {
+  position: relative; /* Enable positioning of children relative to this container */
+  display: flex;
+  flex-direction: column; /* Stack h1 and image vertically */
+  justify-content: flex-start; 
+  align-items: center; 
+  width: 100%;
+  overflow: hidden;
 }
 
 .title {
-
+  position: absolute; /* Position the title over the image */
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem; /* Remove margin */
+  margin-top: 8rem; /* Remove margin */
+  font-family: "Playwrite VN", serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
 }
-.airplane {
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center;     /* Center vertically */
-  height: 80vh;   
+
+.airplane img {
+  width: 100vw;
+  height: auto; 
+  object-fit: cover;
+}
+
+.flights-container {
+  background-color: #0a111b;
 }

@@ -3,16 +3,13 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Flights from "./components/Flights/Flights";
 import Wallet from "./components/Wallet/Wallet";
+import Header from "./components/Header";
 
 
 const App: React.FC = () => {
   return (
     <Router>
-      <nav>
-        <Link to="/">Home</Link> |
-        <Link to="/flights">Flights</Link> |
-        <Link to="/wallet">Wallet</Link>
-      </nav>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/flights" element={<Flights />} />
