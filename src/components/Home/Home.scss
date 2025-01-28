@@ -1,4 +1,4 @@
-.container {
+.home-container {
   margin-top: 5rem; /* Keeps space for the header */
   width: 100%;
 }
@@ -19,9 +19,9 @@
   font-size: 2rem;
   margin-bottom: 2rem; /* Remove margin */
   margin-top: 8rem; /* Remove margin */
-  font-family: "Playwrite VN", serif;
+  font-family: "Poppins", serif;
   font-optical-sizing: auto;
-  font-weight: 200;
+  font-weight: 800;
   font-style: normal;
 }
 
@@ -29,8 +29,4 @@
   width: 100vw;
   height: auto; 
   object-fit: cover;
-}
-
-.flights-container {
-  background-color: #0a111b;
 }

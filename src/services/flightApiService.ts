@@ -1,11 +1,16 @@
 import { BASE_URL, API_VERSION } from "../config/constants";
-import { Flight } from "../models/Flight";
+import { Flight, HomeFlight } from "../models/Flight";
 import { Payload } from "../models/Payload";
 import { getResponse } from "../utils/helpers";
 
-export const fetchAvailableFlights = async (): Promise<any> => {
+export const fetchAvailableFlights = async (): Promise<Flight[]> => {
   const response: Response = await fetch(`${BASE_URL}${API_VERSION}/flights`);
   return getResponse(response, "Error fetching available flights");
+};
+
+export const fetchAvailableHomeFlights = async (): Promise<HomeFlight[]> => {
+  const response: Response = await fetch(`${BASE_URL}${API_VERSION}/flights/home`);
+  return getResponse(response, "Error fetching available home flights");
 };
 
 export const fetchFlightsBySourceAndDestination = async (source: string, destination: string): Promise<any> => {

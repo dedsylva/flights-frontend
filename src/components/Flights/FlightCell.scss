@@ -1,0 +1,44 @@
+@import '../../utils/common.scss';
+
+.flight-cell {
+  flex: 0 1 calc(25% - 0.5rem); /* Each cell takes up one-third of the row minus the gap */
+  max-width: calc(25% - 0.5rem); /* Prevents cells from growing too wide */
+  padding: 0.25rem;
+  box-sizing: border-box; /* Includes padding/borders in the width */
+  border: 0.1rem solid black;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
+  background-color: $background-color;
+}
+
+.table-container {
+  width: 100%; /* Ensures the table takes up the full width of the container */
+}
+
+.table-title {
+  font-size: 1rem !important;
+  font-weight: bold !important; 
+  text-align: center !important;
+  padding: 1rem !important; 
+  background-color: $background-color !important; 
+  color: white !important; 
+  border-bottom: 0.4rem solid black !important;
+}
+
+.airplane-icon {
+  padding-left: 0.5rem;
+}
+
+.cell-title {
+  color: orange !important; 
+  font-weight: bold !important; 
+  font-size: 0.75rem !important;
+  background-color: $background-color;
+  border-bottom: 0.4rem solid black !important;
+}
+
+.cell-value {
+  font-size: 0.75rem !important;
+  background-color: $background-color;
+  border-bottom: 0.4rem solid black !important;
+}

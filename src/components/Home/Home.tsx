@@ -1,16 +1,16 @@
 import HomeAirPlane from '../../assets/HomeAirPlane.png'
-import Flights from '../Flights/Flights';
-import './Home.css';
+import HomeFlights from '../Flights/HomeFlights';
+import './Home.scss';
 
 const Home: React.FC = () => 
-<div className='container'>
+<div className='home-container'>
   <div className="airplane">
     <img src={HomeAirPlane} alt='airplane' /> 
     <h1 className='title'>Book Flights</h1>
   </div>
 
   <div className='fligths-container'>
-    <Flights />
+    <HomeFlights/>
   </div>
 </div>
 

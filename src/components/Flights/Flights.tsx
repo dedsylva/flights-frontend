@@ -8,14 +8,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import './Flights.css';
 
-const formatCurrency = (value: number ): string => {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  }).format(value);
-};
+import './Flights.scss';
 
 
 const Flights: React.FC = () => {
@@ -26,7 +20,7 @@ const Flights: React.FC = () => {
   const getFlights = async () => {
     console.log("Fetching Data");
     try {
-        const userData = await fetchAvailableFlights();
+        const userData: Flight[] = await fetchAvailableFlights();
         setFlights(userData); 
         setError(null);
       } catch (err: any) {

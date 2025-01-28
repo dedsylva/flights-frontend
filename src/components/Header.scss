@@ -1,3 +1,5 @@
+@import '../utils/common.scss';
+
 .header {
   background-color: #0f0e0e;
   padding: 1.5rem;
@@ -27,7 +29,7 @@
 }
 
 .link:hover {
-  color: rgb(226, 226, 47);
+  color: $focus-titles;
   font-weight: bold;
   transform: scale(1.2)
 }
