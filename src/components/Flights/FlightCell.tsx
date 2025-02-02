@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { IoIosAirplane } from "react-icons/io";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -12,8 +13,14 @@ import { formatCurrency } from "../../utils/helpers";
 import "./FlightCell.scss";
 
 const FlightCell: React.FC<{ homeFlight: HomeFlight }> = ({ homeFlight }) => {
+
+  const navigate = useNavigate(); 
+  const handleFlightClick = () => {
+    navigate(`/flights/${homeFlight.id}`); 
+  };
+
   return (
-    <div className="flight-cell">
+    <div className="flight-cell" onClick={handleFlightClick}>
       <TableContainer component={Paper} className="table-container">
         <Table aria-label="flights table" className="flights-table">
           <TableHead>

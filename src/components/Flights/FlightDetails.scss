@@ -1,0 +1,24 @@
+.flight-details-container {
+  margin-top: 5rem; /* Keeps space for the header */
+  display: flex;
+}
+
+.flight-details-container img {
+  border-radius: 4rem;
+  padding: 2rem;
+}
+
+.separator {
+  width: 0.2rem; /* Thickness of the vertical line */
+  height: 40rem; /* Adjust height as needed */
+  background-color: gray; /* Line color */
+}
+
+.h4-flight-details {
+  padding: 1rem;
+  word-spacing: 0.5rem;
+}
+
+.error-container {
+  margin-top: 5rem; /* Keeps space for the header */
+}

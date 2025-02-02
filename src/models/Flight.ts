@@ -1,4 +1,5 @@
 export interface HomeFlight {
+  id: string,
   source: string,
   destination: string,
   flightTime: Date,
