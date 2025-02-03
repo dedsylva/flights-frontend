@@ -1,5 +1,6 @@
 .flight-details-container {
-  margin-top: 5rem; /* Keeps space for the header */
+  width: 100vw;
+  margin-top: 5rem; 
   display: flex;
 }
 
@@ -9,14 +10,24 @@
 }
 
 .separator {
-  width: 0.2rem; /* Thickness of the vertical line */
-  height: 40rem; /* Adjust height as needed */
+  margin-top: 2rem;
+  width: 0.2rem; 
+  height: 50rem; 
   background-color: gray; /* Line color */
 }
 
-.h4-flight-details {
-  padding: 1rem;
+.flight-details-text-container {
+  flex: 1;
+}
+
+.flight-details-title {
+  text-align: center;
   word-spacing: 0.5rem;
+}
+
+.flight-details-content {
+  padding: 2rem; 
+  text-indent: 2rem; /* Margin on the first line of the paragraoh */
 }
 
 .error-container {

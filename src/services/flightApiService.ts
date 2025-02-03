@@ -3,10 +3,16 @@ import { Flight, HomeFlight } from "../models/Flight";
 import { Payload } from "../models/Payload";
 import { getResponse } from "../utils/helpers";
 
-export const fetchHomeFlightById = async(id: String): Promise<HomeFlight> => {
-  console.log(`Fetching from ${BASE_URL}${API_VERSION}/flights/${id}`)
+export const fetchFlightById = async(id: String): Promise<Flight> => {
+  console.log(`Fetching Flight from ${BASE_URL}${API_VERSION}/flights/${id}`)
   const response: Response = await fetch(`${BASE_URL}${API_VERSION}/flights/${id}`);
-  return getResponse(response, `Error fetching flight with id ${id}`);
+  return getResponse(response, `Error fetching home flight with id ${id}`);
+}
+
+export const fetchHomeFlightById = async(id: String): Promise<HomeFlight> => {
+  console.log(`Fetching HomeFlight from ${BASE_URL}${API_VERSION}/flights/${id}`)
+  const response: Response = await fetch(`${BASE_URL}${API_VERSION}/flights/${id}`);
+  return getResponse(response, `Error fetching home flight with id ${id}`);
 }
 
 export const fetchAvailableFlights = async (): Promise<Flight[]> => {

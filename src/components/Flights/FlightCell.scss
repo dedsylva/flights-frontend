@@ -9,6 +9,11 @@
   border-radius: 0.5rem;
   box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
   background-color: $background-color;
+  cursor: pointer;
+}
+
+.flight-cell:hover {
+  box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.3); 
 }
 
 .table-container {
