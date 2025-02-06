@@ -8,40 +8,40 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { HomeFlight } from "../../models/Flight";
+import { Flight } from "../../models/Flight";
 import { formatCurrency } from "../../utils/helpers";
 import "./FlightCell.scss";
 
-const FlightCell: React.FC<{ homeFlight: HomeFlight }> = ({ homeFlight }) => {
+const FlightCell: React.FC<{ Flight: Flight }> = ({ Flight }) => {
 
   const navigate = useNavigate(); 
   const handleFlightClick = () => {
-    navigate(`/flights/${homeFlight.id}`); 
+    navigate(`/flights/${Flight.id}`); 
   };
 
   return (
-    <div className="flight-cell" onClick={handleFlightClick}>
-      <TableContainer component={Paper} className="table-container">
-        <Table aria-label="flights table" className="flights-table">
+    <div className="flight-cell-container" onClick={handleFlightClick}>
+      <TableContainer component={Paper} className="flight-cell-table-container">
+        <Table aria-label="flights table" className="flight-cell-table">
           <TableHead>
             <TableRow>
-              <TableCell colSpan={2} className="table-title">
-                {homeFlight.source} → {homeFlight.destination} <IoIosAirplane className="airplane-icon" />
+              <TableCell colSpan={2} className="flight-cell-table-title">
+                {Flight.source} → {Flight.destination} <IoIosAirplane className="airplane-icon" />
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             <TableRow>
-              <TableCell className="cell-title">Flight Time</TableCell>
-              <TableCell className="cell-value">{new Date(homeFlight.flightTime).toLocaleString()}</TableCell>
+              <TableCell className="flight-cell-title">Flight Time</TableCell>
+              <TableCell className="flight-cell-value">{new Date(Flight.flightTime).toLocaleString()}</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="cell-title">Available Seats</TableCell>
-              <TableCell className="cell-value">{homeFlight.passengersLeft}</TableCell>
+              <TableCell className="flight-cell-title">Available Seats</TableCell>
+              <TableCell className="flight-cell-value">{Flight.passengersLeft}</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="cell-title">Price Per Seat ($)</TableCell>
-              <TableCell className="cell-value">{formatCurrency(homeFlight.price)}</TableCell>
+              <TableCell className="flight-cell-title">Price Per Seat ($)</TableCell>
+              <TableCell className="flight-cell-value">{formatCurrency(Flight.price)}</TableCell>
             </TableRow>
           </TableBody>
         </Table>

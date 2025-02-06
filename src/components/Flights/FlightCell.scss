@@ -1,6 +1,6 @@
 @import '../../utils/common.scss';
 
-.flight-cell {
+.flight-cell-container {
   flex: 0 1 calc(25% - 0.5rem); /* Each cell takes up one-third of the row minus the gap */
   max-width: calc(25% - 0.5rem); /* Prevents cells from growing too wide */
   padding: 0.25rem;
@@ -16,11 +16,11 @@
   box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.3); 
 }
 
-.table-container {
+.flight-cell-table-container {
   width: 100%; /* Ensures the table takes up the full width of the container */
 }
 
-.table-title {
+.flight-cell-table-title {
   font-size: 1rem !important;
   font-weight: bold !important; 
   text-align: center !important;
@@ -34,7 +34,7 @@
   padding-left: 0.5rem;
 }
 
-.cell-title {
+.flight-cell-title {
   color: orange !important; 
   font-weight: bold !important; 
   font-size: 0.75rem !important;
@@ -42,7 +42,8 @@
   border-bottom: 0.4rem solid black !important;
 }
 
-.cell-value {
+.flight-cell-value {
+  color: white !important;
   font-size: 0.75rem !important;
   background-color: $background-color;
   border-bottom: 0.4rem solid black !important;

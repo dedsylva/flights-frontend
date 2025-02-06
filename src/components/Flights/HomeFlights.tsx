@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { HomeFlight } from "../../models/Flight";
-import { fetchAvailableHomeFlights } from "../../services/flightApiService";
+import { Flight } from "../../models/Flight";
+import { fetchAvailableFlights } from "../../services/flightApiService";
 import './HomeFlights.scss';
 import FlightCell from "./FlightCell";
 import EmptyTable from "../../utils/EmptyTable";
@@ -8,14 +8,14 @@ import EmptyTable from "../../utils/EmptyTable";
 
 const HomeFlights: React.FC = () => {
 
-  const [homeFlights, setHomeFlights] = useState<HomeFlight[]>([]); // Array of Flight objects
+  const [Flights, setFlights] = useState<Flight[]>([]); // Array of Flight objects
   const [error, setError] = useState<string | null>(null); // Error message or null
 
   const getFlights = async () => {
     console.log("Fetching Data");
     try {
-        const userData = await fetchAvailableHomeFlights();
-        setHomeFlights(userData); 
+        const userData = await fetchAvailableFlights();
+        setFlights(userData); 
         setError(null);
       } catch (err: any) {
         setError(err.message);
@@ -34,10 +34,10 @@ const HomeFlights: React.FC = () => {
       <hr className="hr"/>
 
       {error && <p style={{ color: "red" }}>{error}</p>} 
-      <div className="flight-cell-container">
-        {homeFlights.length > 0 ? (
-          homeFlights.map((homeFlight, _) => ( 
-            <FlightCell homeFlight={homeFlight} />
+      <div className="home-flight-cell-container">
+        {Flights.length > 0 ? (
+          Flights.map((Flight, _) => ( 
+            <FlightCell Flight={Flight} />
           ))
         ) : (
             <EmptyTable text={"No Flights Available"}/>
