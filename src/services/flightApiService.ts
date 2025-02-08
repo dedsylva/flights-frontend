@@ -31,6 +31,7 @@ export const fetchFlightsWithCapacity = async (maxCapacity: number): Promise<any
   return getResponse(response, `Error fetching flights with max capacity ${maxCapacity}`);
 };
 
+
 export const addFlight = async (flight: Flight, user: User): Promise<any> => {
   const payload: Payload = {
     method: 'POST',
@@ -38,8 +39,14 @@ export const addFlight = async (flight: Flight, user: User): Promise<any> => {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'
     },
-    body: JSON.stringify(flight),
-  }
-  const response: Response = await fetch(`${BASE_URL}${API_VERSION}/flights/add?user=${user}`, payload);
-  return getResponse(response, `Error adding flight ${flight}`);
+    body: JSON.stringify({
+      flight: flight,
+      user: user
+    })
+  };
+
+  const url = `${BASE_URL}${API_VERSION}/flights/add?`;
+  const response: Response = await fetch(url, payload);
+  console.log('response', response);
+  return getResponse(response, `Error adding flight ${flight.id}`);
 };

@@ -43,13 +43,18 @@ const FlightDetailInfo: React.FC<{ id?: string }> = ({ id }) => {
 
   const handleBookFlight = async (flight: Flight | undefined, user: User | null) => {
     if (flight === undefined) {
-      console.log('flight is undefined');
       setError('Flight is undefined');
     } else if (user === null) {
-      console.log('User not found');
       setError('User not found in context');
     } else  {
-      await addFlight(flight, user);
+
+      try {
+        const response = await addFlight(flight, user);
+        console.log('Success booking flight', response);
+      } catch (err: any) {
+        console.error('Error booking flight:', err.message);
+        setError(err.message);
+      }
     }
   };
 
@@ -59,39 +64,48 @@ const FlightDetailInfo: React.FC<{ id?: string }> = ({ id }) => {
     console.log('flight: ', flight)
   }, [id]);
 
+
+  // TODO: implement error handling and show a red error message
   return (
-    <div className="flight-detail-info-container">
-    <TableContainer component={Paper} className="flight-detail-info-table-container">
-      <Table aria-label="flights table" className="flight-detail-info-table">
-        <TableHead>
-          <TableRow>
-            <TableCell colSpan={2} className="flight-detail-info-table-title">
-              {flight?.source} → {flight?.destination} 
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            <TableCell className="flight-detail-info-cell-title">Flight Time</TableCell>
-            <TableCell className="flight-detail-info-cell-value">{new Date(flight?.flightTime).toLocaleString()}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell className="flight-detail-info-cell-title">Available Seats</TableCell>
-            <TableCell className="flight-detail-info-cell-value">{bookAvailable ? flight?.passengersLeft : '0'} </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell className="flight-detail-info-cell-title">Price Per Seat ($)</TableCell>
-            <TableCell className="flight-detail-info-cell-value">{formatCurrency(flight?.price)}</TableCell>
-          </TableRow>
-          {bookAvailable && 
-                    <TableRow onClick={() => handleBookFlight(flight, user)}>
-                      <TableCell colSpan={2} className="flight-detail-info-book-flight-button">Book Flight</TableCell>
-                    </TableRow> 
-          }
-        </TableBody>
-      </Table>
-    </TableContainer>
-  </div>
+
+    <>
+      {error ? (<h1>Error</h1>) :
+       (
+            <div className="flight-detail-info-container">
+              <TableContainer component={Paper} className="flight-detail-info-table-container">
+                <Table aria-label="flights table" className="flight-detail-info-table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell colSpan={2} className="flight-detail-info-table-title">
+                        {flight?.source} → {flight?.destination} 
+                      </TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell className="flight-detail-info-cell-title">Flight Time</TableCell>
+                      <TableCell className="flight-detail-info-cell-value">{new Date(flight?.flightTime).toLocaleString()}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="flight-detail-info-cell-title">Available Seats</TableCell>
+                      <TableCell className="flight-detail-info-cell-value">{bookAvailable ? flight?.passengersLeft : '0'} </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="flight-detail-info-cell-title">Price Per Seat ($)</TableCell>
+                      <TableCell className="flight-detail-info-cell-value">{formatCurrency(flight?.price)}</TableCell>
+                    </TableRow>
+                    {bookAvailable && 
+                              <TableRow onClick={() => handleBookFlight(flight, user)}>
+                                <TableCell colSpan={2} className="flight-detail-info-book-flight-button">Book Flight</TableCell>
+                              </TableRow> 
+                    }
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </div>
+        )
+      }
+    </>
 
   );
 };

@@ -12,39 +12,64 @@ const FlightDetails: React.FC = () => {
     const { id } = useParams<{ id: string }>(); // gettind id from URL
     const [flight, setFlight] = useState<Flight>(); 
     const [error, setError] = useState<string | null>(null); 
+    const [isLoading, setIsLoading] = useState(true);
     const { user } = useContext(UserContext);
-
-    const getFlightById = async (id?: string) => {
-      console.log("Fetching Data");
-      if (id) {
-        try {
-            const Flight = await fetchFlightById(id);
-            console.log('Flight', Flight)
-            setFlight(flight); 
-            setError(null);
-          } catch (err: any) {
-            setError(err.message);
-            console.error("Error fetching flights:", err.message);
-          }
-        }
-        else {
-            setError("Id is invalid");
-        }
-    };
 
 
     useEffect(() => {
-      getFlightById(id);
-    }, [id]);
+      const fetchData = async () => {
+          if (!user) {
+              setError("Please log in first");
+              setIsLoading(false);
+              return;
+          }
 
+          if (!id) {
+              setError("Invalid flight ID");
+              setIsLoading(false);
+              return;
+          }
 
-  if (error || !flight || !user) {
+          try {
+              const flightData = await fetchFlightById(id);
+              setFlight(flightData);
+              setError(null);
+          } catch (err: any) {
+              setError(err.message);
+          } finally {
+              setIsLoading(false);
+          }
+      };
+
+      fetchData();
+  }, [id, user]);
+
+  if (error) {
       return (
     <div className="error-container">
       <h1>Error</h1>
     </div>
+    )
+  }
+
+  if (isLoading) {
+      return (
+    <div className="loading-container">
+      <h1>Loading...</h1>
+    </div>
+    )
+  }
+
+
+  if (!flight || !user) {
+      return (
+    <div className="no-flight-available-container">
+      <h1>No Flight Available</h1>
+    </div>
   )
   }
+
+
 
   return (
   
@@ -57,7 +82,7 @@ const FlightDetails: React.FC = () => {
       New York, often called <b>New York City</b> or NYC, is the most populous city in the United States, located at the southern tip of New York State on one of the world's largest natural harbors. The city comprises five boroughs, each coextensive with a respective county. The city is the geographical and demographic center of both the Northeast megalopolis and the New York metropolitan area, the largest metropolitan area in the United States by both population and urban area. New York is a global center of finance and commerce, culture, technology, entertainment and media, academics and scientific output, the arts and fashion, and, as home to the headquarters of the United Nations, international diplomacy.
       </p>
 
-     <FlightDetailInfo id={flight.id} user={user} />
+     <FlightDetailInfo id={flight.id}/>
     </div>
   </div>
 

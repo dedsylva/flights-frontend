@@ -3,14 +3,14 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Flights from "./components/Flights/Flights";
 import Wallet from "./components/Wallet/Wallet";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import FlightDetails from "./components/Flights/FlightDetails";
-import { UserContext} from "./context/UserContext";
+import { UserProvider} from "./context/UserContext";
 
 
 const App: React.FC = () => {
   return (
-    <UserContext.Provider value={{ user: null, setUser: () => {} }}>
+    <UserProvider>
       <Router>
         <Header />
         <Routes>
@@ -20,7 +20,7 @@ const App: React.FC = () => {
           <Route path="/wallet" element={<Wallet />} />
         </Routes>
       </Router>
-    </UserContext.Provider>
+    </UserProvider>
   );
 };
 

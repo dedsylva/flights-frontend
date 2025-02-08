@@ -1,3 +1,5 @@
+@import '../../utils/common.scss';
+
 .home-container {
   margin-top: 5rem; /* Keeps space for the header */
   width: 100%;
@@ -32,26 +34,80 @@
 }
 
 .home-no-user-container {
-  margin-top: 30rem; 
+  margin-top: 5rem; /* Keeps space for the header */
+  width: 100%;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center !important; 
+  align-items: center !important; 
+  gap: 2rem; 
+}
+
+.sign-up-airplane img {
   width: 100vw;
-  height: 100vh;
+  height: 30vh; 
+}
+
+.home-no-user-form-container {
   align-items: center;
 }
 
 .no-user-welcome-title {
   text-align: center;
-
 }
 
-.np-user-text {
+.no-user-welcome-subtitle {
+  text-align: center;
+}
+
+.no-user-text {
   align-items: center; /* Centers vertically */
   text-align: center;
 }
 
 .sign-up-form {
   text-align: center;
+  width: 60vw;
+  margin: 0 auto; 
 }
 
 .user-input {
-  background-color: white;
+  background-color: $background-color;
+
+  .MuiInputLabel-root {
+    font-size: 1rem !important;  // Increased size
+    font-weight: 500 !important;   // Added weight
+    color: white;
+  }
+
+  .MuiInputLabel-root.Mui-focused {
+    font-size: 1rem !important;  // Keep same size when focused
+    color: white !important;     // MUI primary color when focused
+  }
+
+  .MuiOutlinedInput-notchedOutline {
+    border-color: white !important;
+  }
+
+  &:hover .MuiOutlinedInput-notchedOutline {
+    border-color: white !important;
+  }
+
+  &.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: white !important;
+  }
+
+  input {
+    color: white !important;
+  }
+}
+
+.sign-up-button {
+  margin-top: 0.5rem !important;
+  color: white !important;
+  background-color: #FF7F00!important;  // Deep orange
+  
+  &:hover {
+    font-weight: bold;
+  }
 }
