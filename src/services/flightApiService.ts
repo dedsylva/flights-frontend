@@ -45,8 +45,9 @@ export const addFlight = async (flight: Flight, user: User): Promise<any> => {
     })
   };
 
-  const url = `${BASE_URL}${API_VERSION}/flights/add?`;
+  const url = `${BASE_URL}${API_VERSION}/flights/add`;
   const response: Response = await fetch(url, payload);
+  console.log('payload', payload);
   console.log('response', response);
   return getResponse(response, `Error adding flight ${flight.id}`);
 };
